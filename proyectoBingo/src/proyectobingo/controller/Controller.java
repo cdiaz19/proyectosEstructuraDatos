@@ -20,17 +20,19 @@ public class Controller {
 
     private ArrayList<ListBoard> boards;
     private Stack stack = new Stack();
+    private Stack stackRe = new Stack();
     private Player player;
 
     /**
      *
      */
     public Controller() {
-        initialGame();
+        //initialGame();
+        gameStack();
     }
 
     /**
-     * 
+     *
      */
     public void initialGame() {
         Scanner sc = new Scanner(System.in);
@@ -43,11 +45,11 @@ public class Controller {
         createGame(nP, nB);
         //gameStack();
     }
-    
+
     /**
-     * 
+     *
      * @param numberPlayer
-     * @param numberBoard 
+     * @param numberBoard
      */
     public void createGame(int numberPlayer, int numberBoard) {
         int x = 0;
@@ -59,7 +61,7 @@ public class Controller {
                 ListBoard board = new ListBoard();
                 boards.add(board);
             }
-            player = new Player(x, boards);   
+            player = new Player(x, boards);
             player.information();
             x++;
         }
@@ -76,11 +78,12 @@ public class Controller {
             int y = generateNumber();
             if (!stack.existElement(y)) {
                 stack.push(y);
+                stackRe.push(y);
+                System.err.println("Número:");
+                showNumberToColumn(y);
             }
             x--;
         }
-
-        System.err.println(stack.printPila());
     }
 
     /**
@@ -90,5 +93,27 @@ public class Controller {
     public int generateNumber() {
         Random rand = new Random();
         return (rand.nextInt(75));
+    }
+
+    /**
+     *
+     * @param number
+     */
+    public void showNumberToColumn(int number) {
+        if (1 <= number && number < 16) {
+            System.err.println("B " + number);
+        }
+        if (16 <= number && number < 31) {
+            System.err.println("I " + number);
+        }
+        if (31 <= number && number < 46) {
+            System.err.println("N " + number);
+        }
+        if (46 <= number && number < 61) {
+            System.err.println("G " + number);
+        }
+        if (61 <= number && number < 76) {
+            System.err.println("O " + number);
+        }
     }
 }
