@@ -6,7 +6,10 @@
 package proyectobingo;
 
 import java.util.Random;
-import proyectobingo.model.ListBoard;
+import java.util.Timer;
+import java.util.TimerTask;
+import proyectobingo.controller.Controller;
+import proyectobingo.model.Stack;
 
 /**
  *
@@ -17,12 +20,11 @@ public class ProyectoBingo {
     /**
      * @param args the command line arguments
      */
-
+       
     public static void main(String[] args) {
         // TODO code application logic here
         
-        ListBoard lb = new ListBoard();
-
+        Controller ctl = new Controller();
+               
     }
-
 }

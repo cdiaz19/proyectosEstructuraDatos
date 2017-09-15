@@ -19,9 +19,15 @@ public final class ListBoard<T> {
     public ListBoard() {
         root = null;
         generateBoard();
-        System.out.println(printBoard());
+        //System.out.println(printBoard());
     }
 
+    /**
+     * 
+     * @param current
+     * @param number
+     * @param isMax 
+     */
     public void bindNodesB(Node<T> current, int number, Boolean isMax) {
         Node<T> newNode;
         int aux = current.getData();
@@ -40,6 +46,13 @@ public final class ListBoard<T> {
         }
     }
 
+    /**
+     * 
+     * @param currentColumThis
+     * @param currentColumPrev
+     * @param number
+     * @param isMax 
+     */
     public void bindNodesINGO(Node<T> currentColumThis, Node<T> currentColumPrev,
             int number, Boolean isMax) {
         Node<T> newNode;
@@ -78,6 +91,10 @@ public final class ListBoard<T> {
         }
     }
 
+    /**
+     * 
+     * @param number 
+     */
     public void addElementsB(int number) {
         Node<T> current = root;
 
@@ -98,6 +115,11 @@ public final class ListBoard<T> {
         }
     }
 
+    /**
+     * 
+     * @param number
+     * @param firstPrev 
+     */
     public void addElementsINGO(int number, Node<T> firstPrev) {
         Node<T> currentPrev = firstPrev;
         Node<T> firstThis = firstPrev.getNext();
@@ -124,11 +146,21 @@ public final class ListBoard<T> {
         }
     }
 
+    /**
+     * 
+     * @param innerLimit
+     * @return 
+     */
     public int generateNumber(int innerLimit) {
         Random rand = new Random();
         return innerLimit + (rand.nextInt(15));
     }
 
+    /**
+     * 
+     * @param number
+     * @return 
+     */
     public Boolean existNumberB(int number) {
         Node<T> current = root;
         if (root == null) {
@@ -148,6 +180,12 @@ public final class ListBoard<T> {
         }
     }
 
+    /**
+     * 
+     * @param number
+     * @param firstPrev
+     * @return 
+     */
     public Boolean existNumberINGO(int number, Node<T> firstPrev) {
         Node<T> firstThis = firstPrev.getNext();
         Node<T> current = firstThis;
@@ -167,6 +205,9 @@ public final class ListBoard<T> {
         }
     }
 
+    /**
+     * Generate number in board
+     */
     public void generateBoard() {
         Node<T> firstI = null;
         Node<T> firstN = null;
@@ -223,11 +264,19 @@ public final class ListBoard<T> {
         }
     }
 
+    /**
+     * 
+     * @param firstThis 
+     */
     public void sort(Node<T> firstThis) {
         Node<T> current = firstThis;
         int aux = 0;
     }
 
+    /**
+     * 
+     * @return print board
+     */
     public String printBoard() {
         Node<T> firstI = root.getNext();
         Node<T> firstN = firstI.getNext();
