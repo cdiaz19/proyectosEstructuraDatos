@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 import proyectoavl.model.Book;
-import proyectoavl.model.controller.Controller;
+import proyectoavl.controller.Controller;
 
 /**
  *
