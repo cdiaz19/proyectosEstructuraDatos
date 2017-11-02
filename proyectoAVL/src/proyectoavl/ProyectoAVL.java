@@ -5,8 +5,11 @@
  */
 package proyectoavl;
 
-import proyectoavl.model.AVLTree;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Random;
 import proyectoavl.model.Book;
+import proyectoavl.model.controller.Controller;
 
 /**
  *
@@ -14,18 +17,27 @@ import proyectoavl.model.Book;
  */
 public class ProyectoAVL {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        AVLTree<String> tree = new AVLTree<>();
-        for (int i = 1; i <= 7; i++) {
-            tree.insert(String.valueOf(new Book("Name", "Code", "Author", "Description", i)));
-            System.err.println(i);
-        }
+    public static void main(String[] args) throws UnsupportedEncodingException, IOException {
 
-        tree.PrintTree();
-        }
+        Controller ctl = new Controller();
+
+        Random rnd = new Random();
+
+        ctl.add(new Book("La Ilíada", "3010", "Homero", "Bachillerato",
+                rnd.nextInt(3) + 1));
+
+        ctl.add(new Book("Don Quijote", "3011", "Cervantes", "Novela",
+                rnd.nextInt(3) + 1));
+        ctl.add(new Book("Don Quijote", "3012", "Cervantes", "Novela",
+                rnd.nextInt(3) + 1));
+        ctl.add(new Book("Don Quijote", "3013", "Cervantes", "Novela",
+                rnd.nextInt(3) + 1));
+        ctl.add(new Book("Don Quijote", "3014", "Cervantes", "Novela",
+                rnd.nextInt(3) + 1));
+        ctl.add(new Book("Don Quijote", "3015", "Cervantes", "Novela",
+                rnd.nextInt(3) + 1));
+        ctl.add(new Book("Don Quijote", "3016", "Cervantes", "Novela",
+                rnd.nextInt(3) + 1));
+
+    }
 }

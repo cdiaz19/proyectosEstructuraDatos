@@ -9,7 +9,7 @@ package proyectoavl.model;
  *
  * @author cristian
  */
-public class Book {
+public class Book implements Comparable<Book> {
 
     private String name;
     private String code;
@@ -17,9 +17,22 @@ public class Book {
     private String description;
     private int type;
 
+    /**
+     * Constructor 
+     */
     public Book() {
     }
 
+    /**
+     * 
+     * Constructor 
+     *
+     * @param name
+     * @param code
+     * @param author
+     * @param description
+     * @param type 
+     */
     public Book(String name, String code, String author, String description, int type) {
         this.name = name;
         this.code = code;
@@ -98,8 +111,26 @@ public class Book {
         this.type = type;
     }
 
+    /**
+     * 
+     * @return Code Data
+     */
     @Override
     public String toString() {
-        return "Book{" + "name=" + name + '}';
+        return "Nombre: " + name + "\n" +
+               "Author: " + author + "\n" +
+               "Descripcion: " + description + "\n" +
+               "Codigo: " + code + "\n" +
+               "Tipo: " + type + "\n";
+    }
+
+    /**
+     * a) Inclusión de nuevos libros dentro del árbol.(sin repetir código)
+     * @param o
+     * @return Book Object 
+     */
+    @Override
+    public int compareTo(Book o) {
+        return this.code.compareTo(o.code);
     }
 }

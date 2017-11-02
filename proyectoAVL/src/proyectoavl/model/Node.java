@@ -77,12 +77,19 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
     }
 
     @Override
-    public int compareTo(Node<T> o) {
-        return this.data.compareTo(o.data);
+    public String toString() {
+        if (this.getLeft() != null && this.getRight() != null) {
+            return data + "\n || left " + this.getLeft().data + "\n | right " + this.getRight().data;
+        } else if (this.getLeft() != null && this.getRight() == null) {
+            return data + "\n || left " + this.getLeft().data;
+        } else if (this.getLeft() == null && this.getRight() != null) {
+            return data + "\n || right " + this.getRight().data;
+        }
+
+        return data + "";
     }
 
-    @Override
-    public String toString() {
+    public String toStringNivels() {
         if (this.getLeft() != null && this.getRight() != null) {
             return "Level " + level + ": " + data + " || left " + this.getLeft().data + " | right " + this.getRight().data;
         } else if (this.getLeft() != null && this.getRight() == null) {
@@ -92,5 +99,15 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         }
 
         return "Level " + level + ": " + data;
+    }
+
+    /**
+     *
+     * @param o
+     * @return Node<T> Object
+     */
+    @Override
+    public int compareTo(Node<T> o) {
+        return this.data.compareTo(o.data);
     }
 }
