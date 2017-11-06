@@ -18,7 +18,7 @@ public class ProyectoAVL {
     public static void main(String[] args) throws ClassNotFoundException, IOException {
 
         Controller ctl = new Controller(); 
-                
+                        
         ctl.printNivels();
     }
 }

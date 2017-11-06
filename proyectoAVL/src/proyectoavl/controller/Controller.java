@@ -24,6 +24,7 @@ public class Controller {
 
     Model model = new Model();
     private final String ruta = "archivo.txt";
+    private File archivo = new File(ruta);
 
     public Controller() {
         this.model = model;
@@ -37,19 +38,11 @@ public class Controller {
     }
 
     public void add(Book book) throws ClassNotFoundException, IOException {
-        ObjectInputStream ois = null;
-        try {
-            FileInputStream fis = new FileInputStream(ruta);
-            ois = new ObjectInputStream(fis);
+        FileOutputStream bw = new FileOutputStream(archivo, true);
 
-            while (true) {
-                Book b = (Book) ois.readObject();
-                model.addAVL(book);
-                System.err.println(b.getAuthor());
-            }
-        } catch (IOException io) {
-        } finally {
-            ois.close();
+        try (ObjectOutputStream oss = new ObjectOutputStream(bw)) {
+            oss.writeObject(book);
+            model.addAVL(book);
         }
     }
 
@@ -88,7 +81,6 @@ public class Controller {
     public void file() throws IOException, ClassNotFoundException {
         //Crea el Archivo.
 
-        File archivo = new File(ruta);
         if (archivo.exists()) {
             System.err.println("Ya el Archivo Existe");
         } else {
