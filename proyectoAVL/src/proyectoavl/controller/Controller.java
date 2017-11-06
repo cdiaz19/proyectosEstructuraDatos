@@ -36,7 +36,7 @@ public class Controller {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void add(Book book) throws ClassNotFoundException, IOException {
         FileOutputStream bw = new FileOutputStream(archivo, true);
 
@@ -77,6 +77,10 @@ public class Controller {
     public void heightTree() {
         model.height();
     }
+    
+    public boolean search(Book book){
+        return model.search(book);
+    }
 
     public void file() throws IOException, ClassNotFoundException {
         //Crea el Archivo.
@@ -84,6 +88,7 @@ public class Controller {
         if (archivo.exists()) {
             System.err.println("Ya el Archivo Existe");
         } else {
+            System.err.println("Archivo Nuevo");
             FileOutputStream bw = new FileOutputStream(archivo, true);
 
             try (ObjectOutputStream oss = new ObjectOutputStream(bw)) {

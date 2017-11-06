@@ -7,7 +7,8 @@ package proyectoavl;
 
 import java.io.IOException;
 import proyectoavl.controller.Controller;
-import proyectoavl.model.Book;
+import proyectoavl.model.Model;
+import proyectoavl.view.View;
 
 /**
  *
@@ -15,10 +16,8 @@ import proyectoavl.model.Book;
  */
 public class ProyectoAVL {
 
-    public static void main(String[] args) throws ClassNotFoundException, IOException {
+    public static void main(String[] args) {
 
-        Controller ctl = new Controller(); 
-                        
-        ctl.printNivels();
+        View view = new View();
     }
 }

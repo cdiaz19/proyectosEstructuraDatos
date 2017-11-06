@@ -25,6 +25,10 @@ public class Model {
     public void addAVL(Book book) {
         tree.insert(new Node<>(book));
     }
+    
+    public boolean search(Book book){
+        return tree.search(new Node(book));
+    }
 
     public void searchByType(int type) {
         if (tree.searchByType(type) != null) {
