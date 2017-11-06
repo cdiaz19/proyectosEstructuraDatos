@@ -26,6 +26,14 @@ public class Model {
         tree.insert(new Node<>(book));
     }
 
+    public void searchByType(int type) {
+        if (tree.searchByType(type) != null) {
+            System.out.print(tree.searchByType(type));
+        } else {
+            System.out.print("El xxx no existe\n");
+        }
+    }
+
     /**
      * 4) Busqueda Por Código
      *
@@ -70,13 +78,14 @@ public class Model {
             System.out.println("El Arbol no esta lleno, Cada nodo no posee Cero o 2 Hijos");
         }
     }
-    
+
     /*
      * 8) La altura.(Camino más largo desde la raíz hasta la hoja en el árbol)
      */
-    public void height(){
+    public void height() {
         tree.height();
     }
+
     /**
      * 9) El nivel.(La raíz de un árbol se considera en el nivel 1 y así
      * sucesivamente.)

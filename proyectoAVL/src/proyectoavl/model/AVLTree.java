@@ -201,6 +201,23 @@ public class AVLTree<T extends Comparable<T>> {
 
     /* Metodos Busqueda */
  /* 1) Todos los libros de un mismo tipo. (Ordenados lexicográficamente utilizando el algoritmo de Radix) */
+    public Node<T> searchByType(int type) {
+        Node<T> local = root;
+        Node<T> cod = new Node<>((T) new Book("", "", "", "", type));
+        boolean flat = false;
+        while (local != null) {
+            if (local.getData().compareTo((T) cod) == 0) {
+                flat = true;
+                break;
+            } else if (local.getData().compareTo((T) cod) > 0) {
+                local = local.getLeft();
+            } else {
+                local = local.getRight();
+            }
+        }
+
+        return (flat == true) ? local : null;
+    }
  /* 2) Todos los libros de un autor. (Ordenados lexicográficamente utilizando el algoritmo de Radix) */
  /* 3) Por nombre. (Ordenados lexicográficamente utilizando el algoritmo de Radix) */
     /**

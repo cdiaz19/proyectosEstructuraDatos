@@ -6,10 +6,8 @@
 package proyectoavl;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.Random;
-import proyectoavl.model.Book;
 import proyectoavl.controller.Controller;
+import proyectoavl.model.Book;
 
 /**
  *
@@ -17,27 +15,10 @@ import proyectoavl.controller.Controller;
  */
 public class ProyectoAVL {
 
-    public static void main(String[] args) throws UnsupportedEncodingException, IOException {
+    public static void main(String[] args) throws ClassNotFoundException, IOException {
 
-        Controller ctl = new Controller();
-
-        Random rnd = new Random();
-
-        ctl.add(new Book("La Ilíada", "3010", "Homero", "Bachillerato",
-                rnd.nextInt(3) + 1));
-
-        ctl.add(new Book("Don Quijote", "3011", "Cervantes", "Novela",
-                rnd.nextInt(3) + 1));
-        ctl.add(new Book("Don Quijote", "3012", "Cervantes", "Novela",
-                rnd.nextInt(3) + 1));
-        ctl.add(new Book("Don Quijote", "3013", "Cervantes", "Novela",
-                rnd.nextInt(3) + 1));
-        ctl.add(new Book("Don Quijote", "3014", "Cervantes", "Novela",
-                rnd.nextInt(3) + 1));
-        ctl.add(new Book("Don Quijote", "3015", "Cervantes", "Novela",
-                rnd.nextInt(3) + 1));
-        ctl.add(new Book("Don Quijote", "3016", "Cervantes", "Novela",
-                rnd.nextInt(3) + 1));
-
+        Controller ctl = new Controller(); 
+                
+        ctl.printNivels();
     }
 }

@@ -5,9 +5,16 @@
  */
 package proyectoavl.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyectoavl.model.Book;
 import proyectoavl.model.Model;
-import proyectoavl.model.Node;
 
 /**
  *
@@ -16,19 +23,44 @@ import proyectoavl.model.Node;
 public class Controller {
 
     Model model = new Model();
+    private final String ruta = "archivo.txt";
 
     public Controller() {
         this.model = model;
+
+        // Creo - Cargo el Archivo y Agrego esos Valores al Arbol
+        try {
+            file();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void add(Book book) {
-        model.addAVL(book);
+    public void add(Book book) throws ClassNotFoundException, IOException {
+        ObjectInputStream ois = null;
+        try {
+            FileInputStream fis = new FileInputStream(ruta);
+            ois = new ObjectInputStream(fis);
+
+            while (true) {
+                Book b = (Book) ois.readObject();
+                model.addAVL(book);
+                System.err.println(b.getAuthor());
+            }
+        } catch (IOException io) {
+        } finally {
+            ois.close();
+        }
     }
-    
+
+    public void searchByType(int type) {
+        model.searchByType(type);
+    }
+
     public void searchByCode(String Code) {
         model.searchByCode(Code);
     }
-    
+
     public void completeTree() {
         model.complete();
     }
@@ -36,11 +68,11 @@ public class Controller {
     public void perfectTree() {
         model.perfect();
     }
-    
+
     public void emptyTree() {
         model.emptyTree();
     }
-    
+
     public void printNivels() {
         model.printNivels();
     }
@@ -53,4 +85,35 @@ public class Controller {
         model.height();
     }
 
+    public void file() throws IOException, ClassNotFoundException {
+        //Crea el Archivo.
+
+        File archivo = new File(ruta);
+        if (archivo.exists()) {
+            System.err.println("Ya el Archivo Existe");
+        } else {
+            FileOutputStream bw = new FileOutputStream(archivo, true);
+
+            try (ObjectOutputStream oss = new ObjectOutputStream(bw)) {
+                oss.writeObject(new Book("La Ilíada", "3010", "Homero", "Bachillerato", 3));
+                oss.writeObject(new Book("Don Quijote", "3011", "Cervantes", "Novela", 2));
+                oss.writeObject(new Book("Cien Años de Soledad", "3012", "García Marquez", "Bachillerato", 3));
+            }
+        }
+
+        // Lee el archivo y agrega esos valores al AVL
+        ObjectInputStream ois = null;
+        try {
+            FileInputStream fis = new FileInputStream(ruta);
+            ois = new ObjectInputStream(fis);
+
+            while (true) {
+                Book book = (Book) ois.readObject();
+                model.addAVL(book);
+            }
+        } catch (IOException io) {
+        } finally {
+            ois.close();
+        }
+    }
 }

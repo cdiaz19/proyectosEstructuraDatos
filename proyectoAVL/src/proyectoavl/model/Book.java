@@ -5,11 +5,13 @@
  */
 package proyectoavl.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author cristian
  */
-public class Book implements Comparable<Book> {
+public class Book implements Comparable<Book>, Serializable {
 
     private String name;
     private String code;
@@ -18,20 +20,20 @@ public class Book implements Comparable<Book> {
     private int type;
 
     /**
-     * Constructor 
+     * Constructor
      */
     public Book() {
     }
 
     /**
-     * 
-     * Constructor 
+     *
+     * Constructor
      *
      * @param name
      * @param code
      * @param author
      * @param description
-     * @param type 
+     * @param type
      */
     public Book(String name, String code, String author, String description, int type) {
         this.name = name;
@@ -112,22 +114,23 @@ public class Book implements Comparable<Book> {
     }
 
     /**
-     * 
+     *
      * @return Code Data
      */
     @Override
     public String toString() {
-        return "Nombre: " + name + "\n" +
-               "Author: " + author + "\n" +
-               "Descripcion: " + description + "\n" +
-               "Codigo: " + code + "\n" +
-               "Tipo: " + type + "\n";
+        return "Nombre: " + name + "\n"
+                + "Author: " + author + "\n"
+                + "Descripcion: " + description + "\n"
+                + "Codigo: " + code + "\n"
+                + "Tipo: " + type + "\n";
     }
 
     /**
      * a) Inclusión de nuevos libros dentro del árbol.(sin repetir código)
+     *
      * @param o
-     * @return Book Object 
+     * @return Book Object
      */
     @Override
     public int compareTo(Book o) {
